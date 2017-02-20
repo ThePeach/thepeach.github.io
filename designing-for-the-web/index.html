@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Designing for the web</h2>
+					<p>Healthy practices for developers and designers</p>
+					<p><small>
+						by Matteo Pescarin - <a href="https://twitter.com/ilpeach">@ilPeach</a><br>
+						#lwsMatts - <a href="http://londonwebstandards.org/">London Web Standards</a> - 20 Feb 2017
+					</small></p>
+					<aside class="notes">
+						Introduce myself.<br>
+						CLOSE: I want to start with a reflection. Perhaps a sad note...
+					</aside>
+				</section>
+
+				<section>
+					<section data-background="img/blade-runner.gif">
+						<p class="fragment fade-up"><em>I've seen things you people wouldn't believe</em></p>
+						<aside class="notes">
+							I've seen developers and designers who didn't want to touch a single line of CSS or HTML.<br>
+							HTML markup that browsers shouldn't even be allowed to parse.<br>
+							Fantastic designs that would work perfectly on paper. But that's about it.<br>
+							CLOSE> All those moments will be lost in time, like tears in rain.
+						</aside>
+					</section>
+					<section>
+						<h2>There's a lot to take in</h2>
+						<aside class="notes">
+							The problem is two-fold: designers have little understanding of web technologies and standards,<br>
+							while developers are too much focused in learning an ever increasing complexity of the front-end interfaces they are required to build.<br>
+						</aside>
+					</section>
+					<section>
+						<h3>Formatting content</h3>
+						<p class="fragment">Using <code>&lt;table&gt;</code>s to display data</p>
+						<p class="fragment">paginating millions of records</p>
+						<p class="fragment">...and then... <span class="fragment fade-in">UX</span></p>
+						<aside class="notes">
+							at the beginning we were happy if we could do simple things.
+						</aside>
+					</section>
+					<section>
+						<h3>We started to look into</h3>
+						<ul>
+							<li class="fragment">content-first approaches</li>
+							<li class="fragment">personas, user journeys</li>
+							<li class="fragment">interactions and behaviours</li>
+							<li class="fragment">usability</li>
+							<li class="fragment">cross-device compatiliby</li>
+							<li class="fragment">and many other aspects</li>
+						</ul>
+						<p class="fragment fade-up"><em>sometimes too many...</em></p>
+						<aside class="notes">
+							CLOSE> as we can see there's a lot to take in, so...
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<p>let's take baby steps...</p>
+						<h2 class="fragment">You don't know Web Design</h2>
+						<aside class="notes">
+							Let's make things clear
+						</aside>
+					</section>
+					<section>
+						<h3>What is web design?</h3>
+						<p class="fragment fade-up">...everything<span class="fragment">?</span></p>
+						<p class="fragment">maybe something more similar to <span class="fragment highlight-green">product design</span><span class="fragment">?</span></p>
+						<aside class="notes">
+							multi-faceted set of practices and doctrines that surround websites.<br><br>
+							CLOSE> Sometimes it's quite difficult to grasp everything. FOR INSTANCE...
+						</aside>
+					</section>
+					<section>
+						<h3>Semantic markup</h3>
+						<img class="fragment" src="img/html-bad-semantic.png" alt="Bad HTML semantic">
+						<p class="fragment fade-up"><em>almost...</em></p>
+						<aside class="notes">
+							let's see what we have here
+						</aside>
+					</section>
+					<section>
+						<h3>Do you know...</h3>
+						<p class="fragment">
+							What's the difference between<br> 
+							<span class="fragment"><code>&lt;article&gt;</code> and <code>&lt;section&gt;</code>?<span>
+						</p>
+						<p class="fragment">
+							How do you <em>vertically align</em><br>
+							<span class="fragment">an <em>inline</em> element using only CSS?</span>
+						</p>
+						<aside class="notes">
+							How many of you know this?<br>
+							CLOSE> Sometimes is difficult being a developer.
+						</aside>
+					</section>
+					<section>
+						<img src="img/heather-tweet.png"/ alt="the developer conundrum">
+						<aside class="notes">
+							but let's not discourage ourselves.
+						</aside>
+					</section>
+					<section>
+						<h3>If developers have too much to take in...</h3>
+						<img src="img/jerry_s_endless_game_by_jordanlolqwerty-d8ag7ai.gif" alt="Jerry playing on the iPad - &trade; Rick &amp; Morty">
+						<p class="fragment"><em>what should designers do?</em></p>
+						<aside class="notes">
+							CLOSE> let's ask Google, shall we?
+						</aside>
+					</section>
+					<section>
+						<img src="img/Selection_037.png" alt="google results for should designers">
+						<aside class="notes">
+							now that you've been distracted - again - by Trump...<br>
+							CLOSE> let's restrict the search a bit
+					</section>
+					<section>
+						<img src="img/Selection_038.png" alt="google results for should web designers">
+						<aside class="notes">
+							the problem is evident
+						</aside>
+					</section>
+					<section>
+						<h3>Let's calm down</h3>
+						<img src="img/tick.gif" alt="tick">
+						<aside class="notes">
+							[transition slide] [PAUSE]
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>The best of the two worlds</h2>
+						<p>developers and designers are masters in their filed.</p>
+						<aside class="notes">
+							Developers know: limits of technology, cross-compatibility issues, browser capabilities, performance, device limits, semantics and supported features<br>
+							Designers know: why using a grid rather than another, white space, vertical rhythm, typography, color theory, and so on.
+						</aside>
+					</section>
+					<section>
+						<h3>Don't expect to find the unicorn</h3>
+						<img src="img/unicorns-are-OK.jpg" alt="unicorns are OK">
+						<aside class="notes">
+							there are unicorns: developers that became designers, and designers that got into development.<br>
+							CLOSE> be content with what is at hand and work it out with what you have
+						</aside>
+					</section>
+					<section>
+						<h3>Don't expect Tools to solve your problems</h3>
+						<img src="img/vacation-tony-spyra.jpg" alt="Tony Spyra - Vacation">
+						<aside class="notes">
+							designers have approached development with DreamWeaver, GoLive, FrontPage! converting ideas into web pages.<br>
+							developers have tools that helped get close to design: grid systems, SMACSS, Atomic Design and others.
+						</aside>
+					</section>
+					<section>
+						<p>Don't let anybody decide<br> which tools you should be using.</p>
+						<p class="fragment">Allow yourself to be flexible enough<br> to experiment and try new things.</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>A better world is possible</h2>
+						<p class="fragment">What have we learnt so far?</p>
+						<p class="fragment">What can we do to improve things?</p>
+						<aside class="notes">
+							we have learnt that we cannot keep on shifting responsibility, and at the same time we cannot even overload ourselves with knowledge we don't have, with the risk of making a fool of ourselves.<br>
+							There are many thing we can do to improve the current situation without going completely mad.<br>
+							In the following slides I'm going to give you a run-down of what it worked so far and what could potentially be your key to success.
+						</aside>
+					</section>
+					<section>
+						<h3>1-10-100 rule</h3>
+						<p class="fragment"><small>Although 100 is more like in the order of 1.000.000</small></p>
+						<aside class="notes">
+							How many of you know this rule?<br>
+							1: fixing at design time.<br>
+							10: fixing in development.<br>
+							100: fixing after delivery.
+						</aside>
+					</section>
+					<section>
+						<h3>Iterate and validate</h3>
+						<ul>
+							<li class="fragment">Involve your users</li>
+							<li class="fragment">Design in the browser</li>
+							<li class="fragment">Do <span style="color: lime">Rapid Prototyping</span></li>
+							<li class="fragment">Try using <span style="color: lime">Design Sprints</span></li>
+							<li class="fragment">Use <span style="color: lime">Style Guides</span> and <span style="color: lime">Pattern Libraries</span>.</li>
+						</ul>
+						<aside class="notes">
+							Designers and developers are BIASED<br>
+							Design Sprints if you're worried iterations could be too costly<br>
+							CLOSE> this will save you thousands of hours in the long run
+						</aside>
+					</section>
+					<section>
+						<h3>Let's talk about the elephant in the room</h3>
+						<img src="img/dilbert-dysorganisation.gif" alt="Dilbert - Dysorganisation">
+						<aside class="notes">
+							How many of you are working with designers?<br>
+							How many have designers sitting in the same room?<br>
+							How many have are sitting on the same desk?<br>
+							How many talk to designers on a daily basis?
+					</section>
+					<section>
+						<h3>Designers must sit with developers</h3>
+						<p>Promote knowledge sharing and upskilling</p>
+						<aside class="notes">
+							This is not anymore a timid suggestion...<br>
+							No more designs slipped under the devs' door.<br>
+							UI development (or frontend design&copy; Brad Frost) takes time and skills.<br>
+							I've started helping developers to emerge in understanding UI development and design to a level where they can take coherent decisions and create a dialogue with designers, I'm also pushing to make the concept well clear to the companies I’m working with as this is not something that is usually understood.
+						</aside>
+					</section>
+					<section>
+						<h3>This is cool but...</h3>
+						<p class="fragment"><em>Don't panic!</em></p>
+						<p class="fragment fade-up">Work bottom-up</p>
+						<p class="fragment fade-down">Work top-down</p>
+						<aside class="notes">
+							Bottom-up: have devs sit with designers, understand the tools of the trade, elevate devs to focus on frontend design.<br>
+							top-down: build a use-case, with users in mind, accessibility, usability and device agnosticism.
+						</aside>
+					</section>
+					<section>
+						<h3>To keep it simple</h3>
+						<img width="100%" src="img/ron-swanson.jpg"/ alt="Ron Swanson said: Never half-ass two things. Whole ass one thing." class="fragment">
+						<aside class="notes">
+							I'd like to end with a quote that should sum it up pretty well
+						</aside>
+					</section>
+				</section>
+				<section data-background-video="img/calming-clouds.mp4" data-background-video-loop="true">
+					<h2>Thank you!</h2>
+					<p class="fragment fade-up">...questions?</p>
+					<p class="fragment fade-up">Find me on Twitter as <a href="https://twitter.com/ilpeach" style="color: black">@ilPeach</a></p>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
