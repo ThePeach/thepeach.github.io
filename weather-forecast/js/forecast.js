@@ -1,7 +1,7 @@
 // This specific module deals with the data that is received by Open Weather Map
 
 const FORECAST = (function () {
-  const days = []
+  let days = []
   function Day () {
     this.date = null // unix timestamp
     this.temp = {
@@ -9,7 +9,16 @@ const FORECAST = (function () {
       min: null
     }
     this.wind = {
-      speed: null,
+      speed: {
+        avg: function () {
+          let total = 0
+          for (let i = 0; i < this.timed.length; i++) {
+            total += this.timed[i]
+          }
+          return total / this.timed.length
+        },
+        timed: []
+      },
       direction: {
         degrees: null,
         abbr: null
@@ -18,20 +27,20 @@ const FORECAST = (function () {
     this.cloudCoverage = {
       avg: function () {
         let total = 0
-        for (let i = 0; i < this.cloudCoverage.timed.length; i++) {
-          total += this.cloudCoverage.timed[i]
+        for (let i = 0; i < this.timed.length; i++) {
+          total += this.timed[i]
         }
-        return total / this.cloudCoverage.timed.length
+        return total / this.timed.length
       },
       timed: []
     }
     this.precipitation = {
       avg: function () {
         let total = 0
-        for (let i = 0; i < this.precipitation.timed.length; i++) {
-          total += this.precipitation.timed[i]
+        for (let i = 0; i < this.timed.length; i++) {
+          total += this.timed[i]
         }
-        return total / this.precipitation.timed.length
+        return total / this.timed.length
       },
       timed: []
     }
@@ -40,7 +49,7 @@ const FORECAST = (function () {
     this.date = new Date(data.dt * 1000)
     this.temp.max = data.main.temp_max
     this.temp.min = data.main.temp_min
-    this.wind.speed = data.wind.speed
+    this.wind.speed.timed.push(data.wind.speed)
     this.wind.direction.degrees = data.wind.deg
     this.cloudCoverage.timed.push(data.clouds.all)
     this.precipitation.timed.push(data.rain['3h'] || 0)
@@ -52,12 +61,22 @@ const FORECAST = (function () {
     if (this.temp.min > data.main.temp_min) {
       this.temp.min = data.main.temp_min
     }
+    this.wind.speed.timed.push(data.wind.speed)
     this.cloudCoverage.timed.push(data.clouds.all)
     this.precipitation.timed.push(data.rain['3h'] || 0)
+  }
+  Day.prototype.getShortWeek = function getShortWeek () {
+    const weekDaysAbbr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    // this needs to cater for current locale, defaults to client locale (assuming UTC)
+    return weekDaysAbbr[this.date.getDay()]
   }
 
   function parseData (data) {
     let prevDay = null
+
+    if (!data || !data.list || data.list.constructor !== Array) {
+      return []
+    }
 
     for (let i = 0; i < data.list.length; i++) {
       let currDay
@@ -78,7 +97,16 @@ const FORECAST = (function () {
     return days
   }
 
+  function reset () {
+    days = []
+  }
+
   return {
-    parse: parseData
+    parse: parseData,
+    reset: reset
   }
 })()
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = FORECAST
+}

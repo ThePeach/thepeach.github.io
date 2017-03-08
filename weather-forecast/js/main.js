@@ -2,7 +2,6 @@
 
 function init (data) {
   const days = FORECAST.parse(data)
-  console.log(days)
   const dayEls = document.getElementsByClassName('w-forecast_day')
 
   for (let i = 0; i < days.length; i++) {
@@ -11,20 +10,27 @@ function init (data) {
 }
 
 function injectData (element, data) {
-  const weekDaysAbbr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-
   if (element === undefined) {
     return false
   }
 
-  const WeekDay = element.querySelector('.w-forecast_day-text')
-  WeekDay.innerHTML = weekDaysAbbr[data.date.getDay()]
+  const weekDay = element.querySelector('.w-forecast_day-text')
+  weekDay.innerHTML = data.getShortWeek()
 
-  const TempMax = element.querySelector('.w-forecast_temp--max')
-  TempMax.innerHTML = `${parseInt(data.temp.max, 10)}&deg;C`
+  const tempMax = element.querySelector('.w-forecast_temp--max')
+  tempMax.innerHTML = `${parseInt(data.temp.max, 10)}&deg;C`
 
-  const TempMin = element.querySelector('.w-forecast_temp--min')
-  TempMin.innerHTML = `${parseInt(data.temp.min, 10)}&deg;C`
+  const tempMin = element.querySelector('.w-forecast_temp--min')
+  tempMin.innerHTML = `${parseInt(data.temp.min, 10)}&deg;C`
+
+  const windSpeed = element.querySelector('.w-forecast_wind--speed')
+  windSpeed.innerHTML = `${data.wind.speed.avg().toFixed(2)}m/s`
+
+  const cloudCoverage = element.querySelector('.w-forecast_clouds--cover')
+  cloudCoverage.innerHTML = `${parseInt(data.cloudCoverage.avg(), 10)}%`
+
+  const precipitation = element.querySelector('.w-forecast_precip--qt')
+  precipitation.innerHTML = `${parseInt(data.precipitation.avg(), 10)}mm`
 }
 
 (function () {
